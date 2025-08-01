@@ -1,5 +1,6 @@
 const noBtn = document.getElementById("no");
 const siBtn = document.getElementById("si");
+const mensajeFinal = document.getElementById("mensajeFinal");
 
 noBtn.addEventListener("mouseover", () => {
   const x = Math.floor(Math.random() * 200) - 100;
@@ -12,6 +13,7 @@ siBtn.addEventListener("click", () => {
     <h2>¡Sabía que me perdonarías! 🥹💞</h2>
     <p>Te amo muchísimo, gracias por seguir conmigo. 💖</p>
   `;
+  mensajeFinal.classList.remove("oculto");
 });
 
 function crearCorazon() {
