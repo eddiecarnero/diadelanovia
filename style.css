@@ -1,41 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Quicksand', sans-serif;
   background: linear-gradient(135deg, #ffe1e8, #ffc3a0);
   margin: 0;
-  padding: 0;
-  overflow: hidden;
+  padding: 20px;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
   text-align: center;
+  min-height: 100vh;
   position: relative;
-  background-image: url(foto.jpg);
 }
 
 h1 {
   font-family: 'Pacifico', cursive;
   color: #ff3366;
+  font-size: 2.2rem;
 }
 
-.carta {
+.carta, .pregunta, .mensaje-final {
   background-color: white;
-  padding: 30px;
+  padding: 25px;
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  max-width: 600px;
-  margin-bottom: 30px;
+  max-width: 90%;
+  margin-bottom: 25px;
   animation: fadeIn 2s ease-in;
 }
 
 .pregunta {
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 20px;
-  border-radius: 15px;
-  animation: fadeIn 2.5s ease-in;
+  animation-delay: 1s;
 }
 
 .botones {
@@ -43,6 +43,7 @@ h1 {
   gap: 20px;
   justify-content: center;
   margin-top: 15px;
+  flex-wrap: wrap;
   position: relative;
 }
 
@@ -53,6 +54,7 @@ button {
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
+  z-index: 1;
 }
 
 #si {
@@ -69,7 +71,7 @@ button {
 }
 
 .corazones-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -123,11 +125,6 @@ button {
   display: none;
 }
 
-@keyframes aparecer {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
 @keyframes flotar {
   0% {
     transform: translateY(100vh) rotate(45deg);
@@ -145,4 +142,42 @@ button {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* 🟠 RESPONSIVE ADAPTACIÓN */
+@media screen and (max-width: 600px) {
+  .botones {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  button {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .carta, .pregunta, .mensaje-final {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .corazon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .corazon::before,
+  .corazon::after {
+    width: 15px;
+    height: 15px;
+  }
 }
